@@ -1,0 +1,31 @@
+services:
+  database: 
+    container_name: database
+    image: mysql
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+    volumes:
+        - ./init.sql:/data/init.sql
+    command: --init-file /data/init.sql
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=password
+
+  pish:
+    container_name: pish
+    build:
+      context: pish/
+      dockerfile: Dockerfile
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./pish:/pish
+    environment:
+      - SECRET_KEY=TEST_KEY_TEST_KEY_TEST_KEY
+      - SQLALCHEMY_DATABASE_URI=mysql://admin:password@localhost/pish
+    depends_on:
+      - database

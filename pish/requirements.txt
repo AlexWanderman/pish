@@ -1,0 +1,10 @@
+email-validator
+flask
+flask-httpauth
+flask-login
+flask-migrate
+flask-sqlalchemy
+flask-wtf
+gunicorn
+htmx-flask
+pymysql

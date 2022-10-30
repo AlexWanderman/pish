@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+<!-- Style -->
+{% block style %}
+{% endblock %}
+
+<!-- Scripts -->
+{% block scripts %}
+{% endblock %}
+
+<!-- Title -->
+{% block title %}{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<h1>Register</h1>
+<form method="post" action="/register">
+    {{ form.hidden_tag() }}
+    <label for="email">Email</label>
+    {{ form.email }}
+    <label for="username">Username</label>
+    {{ form.username }}
+    <label for="name">Name</label>
+    {{ form.name }}
+    <label for="password">Password</label>
+    {{ form.password }}
+    <input type="submit" title="Register">
+</form>
+{% endblock %}
